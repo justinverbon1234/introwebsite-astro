@@ -1,11 +1,265 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import JournalPreview from '../components/JournalPreview.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import '../styles/home.css';
+import '../styles/about.css';
+import '../styles/journal.css';
+import '../styles/contact.css';
 ---
 
 <Layout>
-	<Welcome />
+
+    <main id="main-content">
+
+        <section
+            class="hero"
+            id="home"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="hero-meta">
+
+                <p>
+                    Digital Design
+                </p>
+
+                <p>
+                    Amsterdam, 2026
+                </p>
+
+            </div>
+
+
+            <div class="hero-header">
+
+                <h1
+                    class="hero-title"
+                    id="hero-title"
+                >
+
+                    <span>
+                        JUSTIN
+                    </span>
+
+                    <span class="hero-lastname">
+                        VERBON
+                    </span>
+
+                </h1>
+
+            </div>
+
+
+            <div class="hero-footer">
+
+                <p>
+                    Art / Fashion / Tech
+                </p>
+
+                <p>
+                    Vol. 01
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="justin"
+            id="about"
+            aria-labelledby="about-title"
+        >
+
+            <div class="section-header">
+
+                <h2 id="about-title">
+                    JV, Justin Verbon
+                </h2>
+
+            </div>
+
+
+            <div class="justin-layout">
+
+                <div class="justin-content">
+
+                    <div class="justin-intro">
+
+                        <p class="eyebrow">
+                            Who am I?
+                        </p>
+
+                        <p class="justin-quote">
+                            I am a 25 year old FDND student from Utrecht,
+                            exploring the world of art, fashion, and technology.
+                        </p>
+
+                        <p>
+                            I like exploring where design, art, fashion, and
+                            technology come together. My work is driven by
+                            curiosity and experimentation, always trying new
+                            ideas, learning as I go, and creating things that
+                            feel personal, expressive, and visually considered.
+                        </p>
+
+
+                        <div class="justin-meta">
+
+                            <span>
+                                Designer
+                            </span>
+
+                            <span>
+                                Utrecht
+                            </span>
+
+                            <span>
+                                Art / Fashion / Tech
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="justin-visual">
+
+                    <img
+                        src="/images/IMG_4485.jpeg"
+                        alt="Portrait of Justin"
+                        width="840"
+                        height="1313"
+                        loading="lazy"
+                        decoding="async"
+                    />
+
+                </div>
+
+            </div>
+
+
+            <footer class="section-footer">
+
+                <p>
+                    About Me
+                </p>
+
+                <p>
+                    Vol. 02
+                </p>
+
+            </footer>
+
+        </section>
+
+
+
+        <JournalPreview />
+
+
+
+        <section
+            class="contact"
+            id="contact"
+            aria-labelledby="contact-title"
+        >
+
+            <div class="section-header">
+
+                <h2 id="contact-title">
+                    Contact
+                </h2>
+
+            </div>
+
+
+            <div class="contact-content">
+
+                <p class="contact-intro">
+                    I'd love to hear from you! Feel free to reach out for
+                    collaborations, inquiries, or just to say hello.
+                    Hugs and kisses xoxo.
+                </p>
+
+
+                <div class="contact-info">
+
+                    <div class="contact-item">
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+                            <a href="mailto:verbon47@gmail.com">
+                                verbon47@gmail.com
+                            </a>
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <h3>
+                            Location
+                        </h3>
+
+                        <p>
+                            Utrecht, Netherlands
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <h3>
+                            Social
+                        </h3>
+
+                        <div class="contact-socials">
+
+                            <span>
+                                Instagram
+                            </span>
+
+                            <span>
+                                LinkedIn
+                            </span>
+
+                            <span>
+                                Twitter
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <footer class="section-footer">
+
+                <p>
+                    Get In Touch
+                </p>
+
+                <p>
+                    Vol. 04
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
 </Layout>

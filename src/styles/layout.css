@@ -1,0 +1,29 @@
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.section-header h2 {
+    margin: 0;
+
+    font-family: var(--font-logo);
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+}
+
+.section-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: auto;
+
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.section-footer p {
+    margin: 0;
+}

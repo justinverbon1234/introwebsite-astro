@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('journal');
+
+const latestEntries = entries
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3);
+---
+
+<section
+    class="journal"
+    id="journal"
+    aria-labelledby="journal-title"
+>
+
+    <div class="section-header">
+
+        <h2 id="journal-title">
+            Journal
+        </h2>
+
+    </div>
+
+
+    <div class="journal-intro">
+
+        <p>
+            Notes from the studio
+        </p>
+
+        <p>
+            Latest / {latestEntries.length.toString().padStart(2, '0')}
+        </p>
+
+    </div>
+
+
+    <div class="journal-list">
+
+        {
+            latestEntries.map((entry, index) => (
+                <article class="journal-entry">
+
+                    <a
+                        class="journal-entry-link"
+                        href={`/journal/${entry.id}/`}
+                    >
+
+                        <div class="journal-entry-meta">
+
+                            <span class="journal-number">
+                                {(index + 1).toString().padStart(2, '0')}
+                            </span>
+
+                            <span class="journal-category">
+                                {entry.data.category}
+                            </span>
+
+                        </div>
+
+
+                        <div class="journal-entry-main">
+
+                            <h3>
+                                {entry.data.title}
+                            </h3>
+
+                            <p>
+                                {entry.data.description}
+                            </p>
+
+                        </div>
+
+
+                        <div class="journal-entry-end">
+
+                            <time datetime={entry.data.date.toISOString()}>
+                                {
+                                    entry.data.date.toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: '2-digit',
+                                        }
+                                    )
+                                }
+                            </time>
+
+                            <span
+                                class="journal-arrow"
+                                aria-hidden="true"
+                            >
+                                ↗
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </article>
+            ))
+        }
+
+    </div>
+
+
+    <footer class="section-footer">
+
+        <a
+            class="journal-view-all"
+            href="/journal/"
+        >
+            View All Entries
+        </a>
+
+        <p>
+            Vol. 03
+        </p>
+
+    </footer>
+
+</section>

@@ -1,0 +1,156 @@
+.journal {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid var(--border);
+}
+
+.journal-intro {
+    width: min(1100px, 100%);
+    margin: 3rem auto 1.5rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+
+    color: var(--text-muted);
+}
+
+.journal-intro p {
+    margin: 0;
+}
+
+.journal-list {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+
+    border-top: 1px solid var(--border);
+}
+
+.journal-entry {
+    border-bottom: 1px solid var(--border);
+}
+
+.journal-entry-link {
+    min-height: 150px;
+    padding: 1.5rem 0;
+
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    align-items: start;
+    gap: 2rem;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition:
+        opacity var(--transition-default),
+        transform var(--transition-default);
+}
+
+.journal-entry-link:hover {
+    transform: translateX(4px);
+}
+
+.journal-entry-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.journal-number,
+.journal-category,
+.journal-entry time {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+    color: var(--text-muted);
+}
+
+.journal-entry-main {
+    max-width: 700px;
+}
+
+.journal-entry-main h3 {
+    margin: 0 0 0.75rem;
+
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    color: var(--text);
+}
+
+.journal-entry-main p {
+    max-width: 600px;
+    margin: 0;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    color: var(--text-muted);
+}
+
+.journal-entry-end {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.journal-arrow {
+    font-size: 1rem;
+
+    color: var(--text-muted);
+
+    transition: transform var(--transition-default);
+}
+
+.journal-entry-link:hover .journal-arrow {
+    transform: translate(3px, -3px);
+}
+
+.journal-entry-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+}
+
+.journal .section-footer {
+    margin-top: auto;
+    padding-top: 4rem;
+}
+
+
+@media (max-width: 768px) {
+
+    .journal-entry-link {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .journal-entry-meta {
+        justify-content: space-between;
+    }
+
+    .journal-entry-end {
+        justify-content: space-between;
+    }
+
+}
+
+.journal-view-all {
+    color: inherit;
+    text-decoration: none;
+
+    transition: color var(--transition-default);
+}
+
+.journal-view-all:hover {
+    color: var(--accent);
+}

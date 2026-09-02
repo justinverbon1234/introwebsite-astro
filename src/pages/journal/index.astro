@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+
+import '../../styles/journal/archive.css';
+
+
+const entries = (await getCollection('journal')).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+
+const entryCount = entries.length
+    .toString()
+    .padStart(2, '0');
+---
+
+<Layout>
+
+    <main id="main-content">
+
+        <section
+            class="archive-hero"
+            aria-labelledby="archive-page-title"
+        >
+
+            <div class="archive-meta">
+
+                <p>
+                    Archive / Vol. 03
+                </p>
+
+                <p>
+                    2026
+                </p>
+
+            </div>
+
+
+            <div class="archive-title">
+
+                <p>
+                    Notes from the studio
+                </p>
+
+                <h1 id="archive-page-title">
+                    Journal
+                </h1>
+
+            </div>
+
+
+            <div class="archive-intro">
+
+                <p>
+                    A growing collection of projects, ideas, thoughts,
+                    and experiments around the things I am making,
+                    learning, and interested in.
+                </p>
+
+                <p>
+                    {entryCount} Entries
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="archive"
+            aria-labelledby="archive-title"
+        >
+
+            <header class="archive-header">
+
+                <div>
+
+                    <p class="archive-label">
+                        Index
+                    </p>
+
+                    <h2 id="archive-title">
+                        All Entries
+                    </h2>
+
+                </div>
+
+                <p>
+                    Latest / 2026
+                </p>
+
+            </header>
+
+
+            <div class="archive-list">
+
+                {
+                    entries.map((entry, index) => (
+
+                        <article class="archive-entry">
+
+                            <a href={`/journal/${entry.id}/`}>
+
+                                <span class="archive-number">
+                                    {(index + 1)
+                                        .toString()
+                                        .padStart(2, '0')}
+                                </span>
+
+
+                                <span class="archive-category">
+                                    {entry.data.category}
+                                </span>
+
+
+                                <h3>
+                                    {entry.data.title}
+                                </h3>
+
+
+                                <time datetime={entry.data.date.toISOString()}>
+                                    {
+                                        entry.data.date.toLocaleDateString(
+                                            'en-GB',
+                                            {
+                                                day: '2-digit',
+                                                month: '2-digit',
+                                                year: '2-digit',
+                                            }
+                                        )
+                                    }
+                                </time>
+
+
+                                <span
+                                    class="archive-arrow"
+                                    aria-hidden="true"
+                                >
+                                    ↗
+                                </span>
+
+                            </a>
+
+                        </article>
+
+                    ))
+                }
+
+            </div>
+
+
+            <footer class="archive-footer">
+
+                <p>
+                    End of Index
+                </p>
+
+                <p>
+                    Justin Verbon / 2026
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+</Layout>
