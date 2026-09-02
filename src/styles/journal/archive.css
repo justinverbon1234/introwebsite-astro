@@ -80,6 +80,8 @@
 }
 
 
+/* Archive list */
+
 .archive {
     padding: 4rem 1rem 2rem;
 }
@@ -120,7 +122,6 @@
 
     color: var(--text-muted);
 }
-
 
 .archive-list {
     width: min(1200px, 100%);
@@ -169,6 +170,7 @@
 
     font-size: clamp(1.2rem, 2.5vw, 2rem);
     font-weight: 500;
+    line-height: 1.1;
     letter-spacing: -0.035em;
 }
 
@@ -188,12 +190,15 @@
 }
 
 
+/* Footer */
+
 .archive-footer {
     width: min(1200px, 100%);
     margin: 4rem auto 0;
 
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -207,10 +212,29 @@
 }
 
 
-@media (max-width: 768px) {
+/* Mobile */
 
+@media (max-width: 768px) {
     .archive-hero {
-        min-height: 80vh;
+        min-height: 75svh;
+        padding: 1.5rem 1rem 2rem;
+    }
+
+    .archive-meta {
+        gap: 1rem;
+
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+    }
+
+    .archive-title h1 {
+        font-size: clamp(5.5rem, 28vw, 9rem);
+        line-height: 0.7;
+    }
+
+    .archive-title p {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
     }
 
     .archive-intro {
@@ -219,22 +243,85 @@
         gap: 1.5rem;
     }
 
-    .archive-entry a {
-        grid-template-columns: auto 1fr auto;
+    .archive-intro p:first-child {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+        line-height: 1.5;
+    }
+
+    .archive-intro p:last-child {
+        font-size: 0.65rem;
+    }
+
+    .archive {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .archive-header {
+        margin-bottom: 2rem;
+
         gap: 1rem;
     }
 
+    .archive-header h2 {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .archive-header > p {
+        font-size: 0.65rem;
+        white-space: nowrap;
+    }
+
+    .archive-entry a {
+        min-height: 0;
+        padding: 1.5rem 0;
+
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            "number category category"
+            "title title title"
+            "date date arrow";
+
+        gap: 1rem;
+    }
+
+    .archive-entry a:hover {
+        transform: none;
+    }
+
+    .archive-number {
+        grid-area: number;
+    }
+
     .archive-category {
-        display: none;
+        grid-area: category;
     }
 
     .archive-entry h3 {
-        grid-column: 1 / -1;
-        grid-row: 2;
+        grid-area: title;
+
+        font-size: clamp(1.4rem, 7vw, 1.9rem);
+    }
+
+    .archive-entry time {
+        grid-area: date;
     }
 
     .archive-arrow {
+        grid-area: arrow;
         justify-self: end;
     }
 
+    .archive-number,
+    .archive-category,
+    .archive-entry time {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+    }
+
+    .archive-footer {
+        margin-top: 3rem;
+
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+    }
 }

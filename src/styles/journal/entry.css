@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -49,7 +50,6 @@
 
 .entry-heading h1 {
     max-width: 1100px;
-
     margin: 0;
 
     font-size: clamp(4rem, 9vw, 9rem);
@@ -104,7 +104,6 @@
 
 .entry-lead {
     max-width: 900px;
-
     margin: 0 0 7rem;
 
     font-size: clamp(2rem, 4vw, 4rem);
@@ -170,6 +169,7 @@
 .entry-footer-meta {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 
     margin-bottom: 5rem;
 
@@ -245,6 +245,8 @@
 
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 500;
+    line-height: 1.2;
+
     text-transform: none;
     letter-spacing: -0.02em;
 
@@ -268,13 +270,27 @@
 /* Mobile */
 
 @media (max-width: 768px) {
-
     .entry-hero {
+        min-height: calc(100svh - 60px);
         padding: 1.5rem 1rem 2rem;
     }
 
+    .entry-topline {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+    }
+
+    .entry-eyebrow {
+        margin-bottom: 1rem;
+
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+    }
+
     .entry-heading h1 {
-        font-size: clamp(3.5rem, 15vw, 6rem);
+        font-size: clamp(3rem, 13vw, 5rem);
+        line-height: 0.92;
+        letter-spacing: -0.055em;
     }
 
     .entry-intro {
@@ -282,40 +298,64 @@
         gap: 2rem;
     }
 
+    .entry-intro > p {
+        font-size: clamp(1.05rem, 5vw, 1.3rem);
+        line-height: 1.5;
+    }
+
     .entry-details {
         align-items: flex-start;
+
+        font-size: 0.64rem;
     }
 
 
+    /* Body */
+
     .entry-body {
-        padding: 5rem 1rem;
+        padding: 4rem 1rem;
     }
 
     .entry-lead {
-        margin-bottom: 5rem;
+        margin-bottom: 4rem;
 
-        font-size: clamp(2rem, 9vw, 3.5rem);
+        font-size: clamp(1.8rem, 8vw, 3rem);
+        line-height: 1.15;
     }
 
     .entry-copy {
+        width: 100%;
         margin: 0;
     }
 
     .entry-copy > p {
+        margin-bottom: 1.75rem;
+
         font-size: 1rem;
+        line-height: 1.75;
     }
 
     .entry-copy blockquote {
         width: 100%;
 
-        margin: 4rem 0;
+        margin: 3.5rem 0;
 
-        font-size: clamp(2.5rem, 11vw, 4.5rem);
+        font-size: clamp(2.2rem, 10vw, 3.8rem);
+        line-height: 1.05;
     }
 
 
+    /* Footer */
+
+    .entry-footer {
+        padding: 1.5rem 1rem;
+    }
+
     .entry-footer-meta {
         margin-bottom: 3rem;
+
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
     }
 
     .entry-navigation {
@@ -335,17 +375,20 @@
         padding-left: 0;
     }
 
+    .entry-back:hover,
     .entry-next:hover {
-        padding-left: 0.5rem;
+        padding-left: 0;
     }
 
+    .entry-next small {
+        font-size: clamp(1rem, 5vw, 1.3rem);
+    }
 }
 
 
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-
     .entry-navigation a {
         transition: none;
     }
@@ -354,5 +397,4 @@
     .entry-next:hover {
         padding-left: 0;
     }
-
 }
