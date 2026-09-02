@@ -4,17 +4,29 @@ category: "Thought"
 date: 2026-08-20
 eyebrow: "Visual culture"
 description: "Some thoughts on the spaces where visual culture, fashion, technology, and digital experimentation begin influencing one another."
-readTime: "4 min read"
+readTime: "2 min read"
 ---
 
-The things I am most interested in rarely sit neatly inside one category. Art influences fashion, fashion influences design, and technology keeps changing the way all of them are created and experienced.
+I have always liked things that sit somewhere in between different creative worlds.
 
-I have always found the overlap between different creative worlds more interesting than looking at any one of them in isolation. A fashion campaign can feel like an art project. A website can borrow the visual language of a magazine. Technology can become part of the creative process rather than simply the tool used to produce the final result.
+Art, fashion, design and technology all influence each other in some way, and I think that overlap is usually more interesting than looking at them separately.
 
-> The interesting part often happens somewhere between the categories, not inside them.
+A fashion campaign can feel like an art project. A website can take inspiration from a magazine. Technology can be part of the creative idea itself instead of only being the thing you use to make it.
 
-Fashion is a good example of this. It has always been about much more than clothing. Photography, graphic design, architecture, music, film, typography, and technology all contribute to the way fashion is presented and understood.
+> “Eventually everything connects – people, ideas, objects. The quality of the connections is the key to quality per se.”
+>
+> — Charles & Ray Eames
 
-Digital design is moving in a similar direction. Websites are no longer limited to simply organising information on a screen. They can behave like publications, galleries, spaces, tools, experiments, or something somewhere in between.
+Fashion is probably the easiest example.
 
-I think that is why I keep coming back to these areas. There is always another connection to explore, another visual language to borrow from, and another way of combining things that normally would not be placed together.
+It is obviously about clothing, but that is only one part of it. Photography, graphic design, architecture, music, film and typography all help shape the way fashion feels and how it is presented.
+
+I think digital design is becoming more like that as well.
+
+A website does not just have to be a place where information is organised neatly on a screen. It can feel like a publication, a gallery, an experiment, or even something that is a bit difficult to define.
+
+That is probably why I keep coming back to these subjects.
+
+I like taking ideas from different places and seeing what happens when you combine them. Sometimes that means borrowing something from fashion for a website, or using an editorial layout in a digital project.
+
+For me, that is usually where things start to get interesting.
