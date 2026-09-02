@@ -41,3 +41,30 @@
     </nav>
 
 </header>
+
+<script>
+    const header = document.querySelector('.site-header');
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener(
+        'scroll',
+        () => {
+            if (!header) return;
+
+            const currentScrollY = window.scrollY;
+            const difference = currentScrollY - lastScrollY;
+
+            if (currentScrollY < 80) {
+                header.classList.remove('nav-hidden');
+            } else if (difference > 4) {
+                header.classList.add('nav-hidden');
+            } else if (difference < -4) {
+                header.classList.remove('nav-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        },
+        { passive: true }
+    );
+</script>
