@@ -120,7 +120,8 @@
 
 .contact-visual img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    height: auto;
+    aspect-ratio: 1 / 1;
 
     display: block;
 
@@ -183,6 +184,6 @@
     }
 
     .contact-visual img {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 1 / 1;
     }
 }
