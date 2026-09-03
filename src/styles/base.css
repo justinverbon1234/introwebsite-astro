@@ -12,7 +12,6 @@
     --accent: #681F2A;
 
     --transition-default: 300ms ease;
-    --transition-slow: 700ms ease;
 
     --radius-default: 0.75rem;
     --radius-full: 999px;
@@ -77,4 +76,20 @@ a {
 .skip-link:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
 }
