@@ -7,19 +7,20 @@ import "../../styles/journal/entry.css";
 import "../../styles/journal/article.css";
 import "../../styles/journal/thought.css";
 import "../../styles/journal/project.css";
+import "../../styles/journal/school-notes.css";
 
 export async function getStaticPaths() {
     const entries = await getCollection("journal");
 
     const sortedEntries = entries.sort(
         (a, b) =>
-            new Date(b.data.date).getTime() -
-            new Date(a.data.date).getTime()
+            b.data.date.getTime() -
+            a.data.date.getTime()
     );
 
     return sortedEntries.map((entry, index) => {
-        const previousEntry = sortedEntries[index + 1] ?? null;
-        const nextEntry = sortedEntries[index - 1] ?? null;
+        const previousEntry = sortedEntries[index - 1] ?? null;
+        const nextEntry = sortedEntries[index + 1] ?? null;
 
         return {
             params: {
@@ -35,14 +36,22 @@ export async function getStaticPaths() {
     });
 }
 
-const { entry, previousEntry, nextEntry } = Astro.props;
+const {
+    entry,
+    previousEntry,
+    nextEntry,
+} = Astro.props;
 
 const { Content } = await render(entry);
 
 const category = entry.data.category;
 const categoryClass = category.toLowerCase();
 
-const formattedDate = new Date(entry.data.date).toLocaleDateString("en-GB", {
+const seriesClass = entry.data.series
+    ? `journal-entry--${entry.data.series}`
+    : "";
+
+const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -53,7 +62,9 @@ const formattedDate = new Date(entry.data.date).toLocaleDateString("en-GB", {
     title={`${entry.data.title} | Justin Verbon`}
     description={entry.data.description}
 >
-    <main class={`journal-entry journal-entry--${categoryClass}`}>
+    <main
+        class={`journal-entry journal-entry--${categoryClass} ${seriesClass}`}
+    >
         <header class="entry-header">
             <div class="entry-header-top">
                 <p class="entry-eyebrow">
@@ -78,13 +89,17 @@ const formattedDate = new Date(entry.data.date).toLocaleDateString("en-GB", {
             <div class="entry-meta">
                 <p>{formattedDate}</p>
 
-                {entry.data.readTime && (
-                    <p>{entry.data.readTime}</p>
-                )}
+                {
+                    entry.data.readTime && (
+                        <p>{entry.data.readTime}</p>
+                    )
+                }
 
-                {entry.data.status && (
-                    <p>{entry.data.status}</p>
-                )}
+                {
+                    entry.data.status && (
+                        <p>{entry.data.status}</p>
+                    )
+                }
             </div>
         </header>
 
@@ -92,50 +107,47 @@ const formattedDate = new Date(entry.data.date).toLocaleDateString("en-GB", {
             <Content />
         </div>
 
-        <nav class="entry-navigation" aria-label="Journal navigation">
-
+        <nav
+            class="entry-navigation"
+            aria-label="Journal navigation"
+        >
             <div class="entry-navigation-previous">
-
                 {
-                    nextEntry && (
-                        <a
-                            class="entry-navigation-item"
-                            href={`/journal/${nextEntry.id}/`}
-                        >
+                    previousEntry && (
+                        <a href={`/journal/${previousEntry.id}/`}>
                             <span class="entry-navigation-label">
-                                ← Previous Article
+                                Previous Article
+                            </span>
+
+                            <span class="entry-navigation-title">
+                                ← {previousEntry.data.title}
                             </span>
                         </a>
                     )
                 }
-
             </div>
 
             <div class="entry-navigation-index">
-
                 <a href="/journal/">
                     Journal
                 </a>
-
             </div>
 
             <div class="entry-navigation-next">
-
                 {
-                    previousEntry && (
-                        <a
-                            class="entry-navigation-item"
-                            href={`/journal/${previousEntry.id}/`}
-                        >
+                    nextEntry && (
+                        <a href={`/journal/${nextEntry.id}/`}>
                             <span class="entry-navigation-label">
-                                Next Article →
+                                Next Article
+                            </span>
+
+                            <span class="entry-navigation-title">
+                                {nextEntry.data.title} →
                             </span>
                         </a>
                     )
                 }
-
             </div>
-
         </nav>
     </main>
 </Layout>
