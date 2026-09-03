@@ -1,0 +1,156 @@
+.journal-entry--thought .entry-header {
+    max-width: 1400px;
+    min-height: calc(100vh - 140px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.journal-entry--thought .entry-header-top {
+    margin-bottom: 3rem;
+}
+
+.journal-entry--thought .entry-heading {
+    grid-template-columns: minmax(0, 2.5fr) minmax(240px, 1fr);
+    gap: 5rem;
+    align-items: end;
+}
+
+.journal-entry--thought .entry-title {
+    max-width: 1100px;
+
+    font-size: clamp(4.5rem, 10vw, 10rem);
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+}
+
+.journal-entry--thought .entry-description {
+    max-width: 340px;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.journal-entry--thought .entry-meta {
+    margin-top: 4rem;
+}
+
+.journal-entry--thought .entry-content {
+    width: min(calc(100% - 2rem), 720px);
+    margin: 7rem auto 0;
+}
+
+.journal-entry--thought .entry-content p {
+    margin-bottom: 2em;
+
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.journal-entry--thought .entry-content h2 {
+    margin: 6rem 0 2rem;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.journal-entry--thought .entry-content h3 {
+    margin: 4rem 0 1.5rem;
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.journal-entry--thought .entry-content blockquote {
+    width: min(90vw, 1000px);
+    margin: 8rem 50%;
+    transform: translateX(-50%);
+    padding: 0;
+
+    border: 0;
+}
+
+.journal-entry--thought .entry-content blockquote p {
+    margin: 0;
+
+    font-size: clamp(2.8rem, 6vw, 6rem);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+}
+
+.journal-entry--thought .entry-content img {
+    width: min(90vw, 1100px);
+    max-width: none;
+    margin: 7rem 50%;
+    transform: translateX(-50%);
+}
+
+.journal-entry--thought .entry-content ul,
+.journal-entry--thought .entry-content ol {
+    margin: 2.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.journal-entry--thought .entry-content li {
+    margin-bottom: 0.8rem;
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .journal-entry--thought .entry-header {
+        min-height: 0;
+    }
+
+    .journal-entry--thought .entry-heading {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .journal-entry--thought .entry-title {
+        font-size: clamp(3.5rem, 17vw, 6rem);
+        line-height: 0.86;
+    }
+
+    .journal-entry--thought .entry-description {
+        max-width: 100%;
+    }
+
+    .journal-entry--thought .entry-content {
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .journal-entry--thought .entry-content p {
+        font-size: 1.7rem;
+        line-height: 1.75;
+    }
+
+    .journal-entry--thought .entry-content h2 {
+        margin-top: 5rem;
+    }
+
+    .journal-entry--thought .entry-content blockquote {
+        width: 100%;
+        margin: 5rem 0;
+        transform: none;
+    }
+
+    .journal-entry--thought .entry-content blockquote p {
+        font-size: clamp(2.5rem, 13vw, 4.5rem);
+    }
+
+    .journal-entry--thought .entry-content img {
+        width: 100%;
+        margin: 4rem 0;
+        transform: none;
+    }
+}

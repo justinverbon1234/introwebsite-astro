@@ -1,6 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+
 import Layout from '../layouts/Layout.astro';
 import JournalPreview from '../components/JournalPreview.astro';
+
+import justinPortrait from '../assets/images/IMG_4485.jpeg';
+import contactPortrait from '../assets/images/IMG_3137.jpeg';
 
 import '../styles/home.css';
 import '../styles/about.css';
@@ -129,11 +134,11 @@ import '../styles/contact.css';
 
                 <div class="justin-visual">
 
-                    <img
-                        src="/images/IMG_4485.jpeg"
+                    <Image
+                        src={justinPortrait}
                         alt="Portrait of Justin"
-                        width="840"
-                        height="1313"
+                        width={840}
+                        height={1493}
                         loading="lazy"
                         decoding="async"
                     />
@@ -238,13 +243,13 @@ import '../styles/contact.css';
             </div>
 
             <figure class="contact-visual">
-                <img
-                    src="/images/IMG_3137.jpeg"
-                    width="1242"
-                    height="2208"
+                <Image
+                    src={contactPortrait}
+                    alt="Casual portrait of Justin wearing sunglasses and a hoodie"
+                    width={720}
+                    height={1280}
                     loading="lazy"
                     decoding="async"
-                    alt="Casual portrait of Justin wearing sunglasses and a hoodie"
                 />
 
                 <figcaption>

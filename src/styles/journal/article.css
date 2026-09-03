@@ -1,0 +1,85 @@
+.journal-entry--article .entry-header {
+    max-width: 1200px;
+}
+
+.journal-entry--article .entry-title {
+    max-width: 900px;
+}
+
+.journal-entry--article .entry-content {
+    width: min(calc(100% - 2rem), 680px);
+    margin-top: 6rem;
+}
+
+.journal-entry--article .entry-content p {
+    margin-bottom: 2em;
+
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.journal-entry--article .entry-content strong {
+    font-weight: inherit;
+}
+
+.journal-entry--article .entry-content h2 {
+    margin: 5rem 0 1.5rem;
+
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.journal-entry--article .entry-content h3 {
+    margin: 3.5rem 0 1rem;
+
+    font-size: 1.1rem;
+}
+
+.journal-entry--article .entry-content blockquote {
+    margin: 5rem -5rem;
+    padding: 0;
+
+    border: 0;
+
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.journal-entry--article .entry-content blockquote p {
+    margin: 0;
+
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.journal-entry--article .entry-content ul,
+.journal-entry--article .entry-content ol {
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+}
+
+.journal-entry--article .entry-content li {
+    margin-bottom: 0.75rem;
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .journal-entry--article .entry-content {
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .journal-entry--article .entry-content p {
+        font-size: 1.1rem;
+        line-height: 1.75;
+    }
+
+    .journal-entry--article .entry-content blockquote {
+        margin: 4rem 0;
+
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+    }
+}

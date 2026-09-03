@@ -1,278 +1,141 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render } from "astro:content";
 
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
 
-import '../../styles/journal/entry.css';
-
+import "../../styles/journal/entry.css";
+import "../../styles/journal/article.css";
+import "../../styles/journal/thought.css";
+import "../../styles/journal/project.css";
 
 export async function getStaticPaths() {
-    const entries = await getCollection('journal');
+    const entries = await getCollection("journal");
 
-    return entries.map((entry) => ({
-        params: {
-            id: entry.id,
-        },
+    const sortedEntries = entries.sort(
+        (a, b) =>
+            new Date(b.data.date).getTime() -
+            new Date(a.data.date).getTime()
+    );
 
-        props: {
-            entry,
-        },
-    }));
+    return sortedEntries.map((entry, index) => {
+        const previousEntry = sortedEntries[index + 1] ?? null;
+        const nextEntry = sortedEntries[index - 1] ?? null;
+
+        return {
+            params: {
+                id: entry.id,
+            },
+
+            props: {
+                entry,
+                previousEntry,
+                nextEntry,
+            },
+        };
+    });
 }
 
-
-const { entry } = Astro.props;
+const { entry, previousEntry, nextEntry } = Astro.props;
 
 const { Content } = await render(entry);
 
+const category = entry.data.category;
+const categoryClass = category.toLowerCase();
 
-const allEntries = (await getCollection('journal')).sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
-
-
-const currentIndex = allEntries.findIndex(
-    (item) => item.id === entry.id
-);
-
-
-const entryNumber = (currentIndex + 1)
-    .toString()
-    .padStart(2, '0');
-
-
-const previousEntry =
-    currentIndex > 0
-        ? allEntries[currentIndex - 1]
-        : null;
-
-
-const nextEntry =
-    currentIndex < allEntries.length - 1
-        ? allEntries[currentIndex + 1]
-        : null;
-
-
-const authorLabel =
-    entry.data.category === 'Project'
-        ? 'Designed by Justin Verbon'
-        : 'Written by Justin Verbon';
-
-
-const secondaryDetail =
-    entry.data.status ??
-    entry.data.readTime ??
-    '';
+const formattedDate = new Date(entry.data.date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+});
 ---
 
 <Layout
-    title={`${entry.data.title} — Justin Verbon`}
+    title={`${entry.data.title} | Justin Verbon`}
     description={entry.data.description}
 >
+    <main class={`journal-entry journal-entry--${categoryClass}`}>
+        <header class="entry-header">
+            <div class="entry-header-top">
+                <p class="entry-eyebrow">
+                    {entry.data.eyebrow}
+                </p>
 
-    <main id="main-content">
+                <p class="entry-category">
+                    {category}
+                </p>
+            </div>
 
-        <article
-            class="entry"
-            aria-labelledby="entry-title"
-        >
+            <div class="entry-heading">
+                <h1 class="entry-title">
+                    {entry.data.title}
+                </h1>
 
-            <header class="entry-hero">
+                <p class="entry-description">
+                    {entry.data.description}
+                </p>
+            </div>
 
-                <div class="entry-topline">
+            <div class="entry-meta">
+                <p>{formattedDate}</p>
 
-                    <p>
-                        {entry.data.category} / {entryNumber}
-                    </p>
+                {entry.data.readTime && (
+                    <p>{entry.data.readTime}</p>
+                )}
 
-                    <time datetime={entry.data.date.toISOString()}>
-                        {
-                            entry.data.date.toLocaleDateString(
-                                'en-GB',
-                                {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: '2-digit',
-                                }
-                            )
-                        }
-                    </time>
+                {entry.data.status && (
+                    <p>{entry.data.status}</p>
+                )}
+            </div>
+        </header>
 
-                </div>
+        <div class="entry-content">
+            <Content />
+        </div>
 
+        <nav class="entry-navigation" aria-label="Journal navigation">
 
-                <div class="entry-heading">
+            <div class="entry-navigation-previous">
 
-                    <p class="entry-eyebrow">
-                        {entry.data.eyebrow}
-                    </p>
-
-                    <h1 id="entry-title">
-                        {entry.data.title}
-                    </h1>
-
-                </div>
-
-
-                <div class="entry-intro">
-
-                    <p>
-                        {entry.data.description}
-                    </p>
-
-                    <div class="entry-details">
-
-                        <span>
-                            {authorLabel}
-                        </span>
-
-                        {
-                            secondaryDetail && (
-                                <span>
-                                    {secondaryDetail}
-                                </span>
-                            )
-                        }
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-
-            <div class="entry-body">
-
-                <div class="entry-copy">
-
-                    <Content />
-
-                </div>
+                {
+                    nextEntry && (
+                        <a
+                            class="entry-navigation-item"
+                            href={`/journal/${nextEntry.id}/`}
+                        >
+                            <span class="entry-navigation-label">
+                                ← Previous Article
+                            </span>
+                        </a>
+                    )
+                }
 
             </div>
 
+            <div class="entry-navigation-index">
 
+                <a href="/journal/">
+                    Journal
+                </a>
 
-            <footer class="entry-footer">
+            </div>
 
-                <div class="entry-footer-meta">
+            <div class="entry-navigation-next">
 
-                    <p>
-                        End of Entry
-                    </p>
+                {
+                    previousEntry && (
+                        <a
+                            class="entry-navigation-item"
+                            href={`/journal/${previousEntry.id}/`}
+                        >
+                            <span class="entry-navigation-label">
+                                Next Article →
+                            </span>
+                        </a>
+                    )
+                }
 
-                    <p>
-                        {entry.data.category} / {entryNumber}
-                    </p>
+            </div>
 
-                </div>
-
-
-                <nav
-                    class="entry-navigation"
-                    aria-label="Journal entry navigation"
-                >
-
-                    {
-                        previousEntry ? (
-
-                            <a
-                                class="entry-back"
-                                href={`/journal/${previousEntry.id}/`}
-                            >
-
-                                <span aria-hidden="true">
-                                    ←
-                                </span>
-
-                                <span>
-                                    Previous Entry
-
-                                    <small>
-                                        {previousEntry.data.title}
-                                    </small>
-                                </span>
-
-                            </a>
-
-                        ) : (
-
-                            <a
-                                class="entry-back"
-                                href="/#journal"
-                            >
-
-                                <span aria-hidden="true">
-                                    ←
-                                </span>
-
-                                <span>
-                                    Back to Journal
-                                </span>
-
-                            </a>
-
-                        )
-                    }
-
-
-                    {
-                        nextEntry ? (
-
-                            <a
-                                class="entry-next"
-                                href={`/journal/${nextEntry.id}/`}
-                            >
-
-                                <span>
-
-                                    Next Entry
-
-                                    <small>
-                                        {nextEntry.data.title}
-                                    </small>
-
-                                </span>
-
-                                <span aria-hidden="true">
-                                    →
-                                </span>
-
-                            </a>
-
-                        ) : (
-
-                            <a
-                                class="entry-next"
-                                href="/#journal"
-                            >
-
-                                <span>
-
-                                    Back to Journal
-
-                                    <small>
-                                        Latest Entries
-                                    </small>
-
-                                </span>
-
-                                <span aria-hidden="true">
-                                    ↑
-                                </span>
-
-                            </a>
-
-                        )
-                    }
-
-                </nav>
-
-            </footer>
-
-        </article>
-
+        </nav>
     </main>
-
 </Layout>
