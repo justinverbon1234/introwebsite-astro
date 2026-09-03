@@ -118,10 +118,6 @@ const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
                             <span class="entry-navigation-label">
                                 Previous Article
                             </span>
-
-                            <span class="entry-navigation-title">
-                                ← {previousEntry.data.title}
-                            </span>
                         </a>
                     )
                 }
@@ -139,10 +135,6 @@ const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
                         <a href={`/journal/${nextEntry.id}/`}>
                             <span class="entry-navigation-label">
                                 Next Article
-                            </span>
-
-                            <span class="entry-navigation-title">
-                                {nextEntry.data.title} →
                             </span>
                         </a>
                     )

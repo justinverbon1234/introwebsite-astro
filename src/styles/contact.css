@@ -126,9 +126,28 @@
     display: block;
 
     object-fit: cover;
-    object-position: center 45%;
+    object-position: center 58%;
 
     border: 1px solid var(--border);
+    border-radius: 1.25rem 1.25rem 1.25rem 0.4rem;
+
+    box-shadow: 0 20px 40px rgba(23, 23, 21, 0.08);
+
+    filter:
+        grayscale(100%)
+        contrast(1.05)
+        sepia(0.12);
+
+    transform: translateX(0.5rem);
+
+    transition:
+        transform 500ms ease,
+        filter 500ms ease,
+        box-shadow 500ms ease;
+}
+
+.contact-visual:hover img {
+    filter: grayscale(0) contrast(1);
 }
 
 .contact-visual figcaption {
