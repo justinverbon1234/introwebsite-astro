@@ -4,6 +4,8 @@ category: "Article"
 date: 2026-09-04
 eyebrow: "AI and authenticity"
 description: "Instagram’s AI labels are meant to distinguish generated or altered content, but real photographs are still being flagged while some AI-made images go unlabeled."
+descriptionPlacement: "body"
+author: "Justin Verbon"
 readTime: "2 min read"
 ---
 

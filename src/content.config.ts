@@ -23,6 +23,13 @@ const journal = defineCollection({
 
         description: z.string(),
 
+        descriptionPlacement: z.enum([
+            'header',
+            'body',
+        ]).optional(),
+
+        author: z.string().optional(),
+
         readTime: z.string().optional(),
 
         status: z.string().optional(),

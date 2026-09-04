@@ -51,6 +51,8 @@ const seriesClass = entry.data.series
     ? `journal-entry--${entry.data.series}`
     : "";
 
+const descriptionInBody = entry.data.descriptionPlacement === "body";
+
 const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "long",
@@ -76,14 +78,21 @@ const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
                 </p>
             </div>
 
-            <div class="entry-heading">
+            <div class:list={[
+                "entry-heading",
+                { "entry-heading--solo": descriptionInBody },
+            ]}>
                 <h1 class="entry-title">
                     {entry.data.title}
                 </h1>
 
-                <p class="entry-description">
-                    {entry.data.description}
-                </p>
+                {
+                    !descriptionInBody && (
+                        <p class="entry-description">
+                            {entry.data.description}
+                        </p>
+                    )
+                }
             </div>
 
             <div class="entry-meta">
@@ -100,10 +109,26 @@ const formattedDate = entry.data.date.toLocaleDateString("en-GB", {
                         <p>{entry.data.status}</p>
                     )
                 }
+
+                {
+                    entry.data.author && (
+                        <p class="entry-meta-author">
+                            Written by {entry.data.author}
+                        </p>
+                    )
+                }
             </div>
         </header>
 
         <div class="entry-content">
+            {
+                descriptionInBody && (
+                    <p>
+                        {entry.data.description}
+                    </p>
+                )
+            }
+
             <Content />
         </div>
 
