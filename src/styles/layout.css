@@ -9,7 +9,7 @@
 
     font-family: var(--font-logo);
     font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.07em;
 }
 

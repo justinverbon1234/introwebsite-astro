@@ -17,8 +17,7 @@ A personal website and journal for Justin Verbon — an editorial-style digital 
 ```text
 /
 ├── public/
-│   ├── favicon.svg
-│   └── images/             # Static images
+│   └── favicon.svg
 ├── src/
 │   ├── components/         # Navbar, JournalPreview
 │   ├── data/journal/       # Journal entries as Markdown (content collection)

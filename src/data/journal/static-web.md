@@ -1,7 +1,7 @@
 ---
 title: "Learning the Static Web "
 category: "Thought"
-date: 09-03-2026
+date: 2026-09-03
 eyebrow: "School Notes / Week 01"
 description: "Some thoughts on what I am learning about the static web at school, and how I am already applying it while building this website."
 readTime: "2 min read"

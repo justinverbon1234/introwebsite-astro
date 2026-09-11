@@ -76,8 +76,8 @@
     letter-spacing: 0.08em;
 }
 
-.entry-meta-author {
-    margin-left: auto !important;
+.entry-meta .entry-meta-author {
+    margin-left: auto;
     text-align: right;
 }
 
@@ -136,18 +136,8 @@
     text-decoration: none;
 }
 
-.entry-navigation-item a {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .entry-navigation-next {
     text-align: right;
-}
-
-.entry-navigation-next a {
-    align-items: flex-end;
 }
 
 .entry-navigation-label {
@@ -199,8 +189,8 @@
         margin-top: 2rem;
     }
 
-    .entry-meta-author {
-        margin-left: auto !important;
+    .entry-meta .entry-meta-author {
+        margin-left: auto;
     }
 
     .entry-navigation {
